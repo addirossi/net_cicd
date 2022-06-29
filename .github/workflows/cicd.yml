@@ -23,7 +23,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install postgres
-        run: sudo apt install postgresql
+        uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: '12'
 
 #      - name: Create User
 #        run: ...
