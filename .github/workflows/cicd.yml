@@ -22,6 +22,17 @@ jobs:
           python -m pip install pip --upgrade
           pip install -r requirements.txt
 
+      - name: Install postgres
+        run: sudo apt install postgresql
+
+#      - name: Create User
+#        run: ...
+#
+#      - name: Create DB
+#        run: ...
+
+
+
 #      - name: Run migrations
 #        run: python manage.py migrate
 
@@ -30,3 +41,7 @@ jobs:
 
 #      - name: Testing
 #        run: python manage.py test
+#        env:
+#          DB_NAME: test
+#          DB_HOST: localhost
+#          DB_PORT: 5432
