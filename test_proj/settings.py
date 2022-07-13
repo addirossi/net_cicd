@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'test_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-GITHUB_WORKFLOW = config('GITHUB_WORKFLOW', cast=bool)
+GITHUB_WORKFLOW = config('GITHUB_WORKFLOW', cast=bool, default=False)
 
 if GITHUB_WORKFLOW:
     DATABASES = {
