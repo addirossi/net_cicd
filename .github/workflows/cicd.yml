@@ -80,5 +80,6 @@ jobs:
         POSTGRES_DB_PORT: ${{ matrix.database-port }}
         POSTGRES_DB: ${{ matrix.database-name }}
       run: |
+        export GITHUB_WORKFLOW=True
         export DATABASE_URL=postgresql://${{ matrix.database-user }}:${{ matrix.database-password }}@${{ matrix.database-host }}:${{ matrix.database-port }}/${{ matrix.database-name }}?sslmode=disable
         python manage.py test
