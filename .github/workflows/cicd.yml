@@ -39,46 +39,46 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Prepare system
-        uses: actions/checkout@v3
+    tests:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Prepare system
+          uses: actions/checkout@v3
 
-      - name: Install Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
+        - name: Install Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.9
 
-      - name: Install requirements
-        run: |
-          python -m pip install pip --upgrade
-          pip install -r requirements.txt
+        - name: Install requirements
+          run: |
+            python -m pip install pip --upgrade
+            pip install -r requirements.txt
 
-      - name: Install postgres
-        uses: harmon758/postgresql-action@v1
-        with:
-          postgresql version: '12'
+        - name: Install postgres
+          uses: harmon758/postgresql-action@v1
+          with:
+            postgresql version: '12'
 
-      - name: Setup test database
-        env:
-          POSTGRES_DB_NAME: ${{ matrix.database-name }}
-          POSTGRES_USER: ${{ matrix.database-user }}
-          POSTGRES_PASSWORD: ${{ matrix.database-password }}
-          POSTGRES_DB_HOST: ${{ matrix.database-host }}
-          POSTGRES_DB_PORT: ${{ matrix.database-port }}
-          POSTGRES_DB: ${{ matrix.database-name }}
+        - name: Setup test database
+          env:
+            POSTGRES_DB_NAME: ${{ matrix.database-name }}
+            POSTGRES_USER: ${{ matrix.database-user }}
+            POSTGRES_PASSWORD: ${{ matrix.database-password }}
+            POSTGRES_DB_HOST: ${{ matrix.database-host }}
+            POSTGRES_DB_PORT: ${{ matrix.database-port }}
+            POSTGRES_DB: ${{ matrix.database-name }}
 
-#      - name: Create User
-#        run: ...
-#
-#      - name: Create DB
-#        run: ...
+  #      - name: Create User
+  #        run: ...
+  #
+  #      - name: Create DB
+  #        run: ...
 
 
 
-     - name: Run migrations
-       run: python manage.py migrate
+      - name: Run migrations
+        run: python manage.py migrate
 
-     - name: Testing
-       run: python manage.py test
+      - name: Testing
+        run: python manage.py test
