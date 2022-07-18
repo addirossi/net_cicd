@@ -73,15 +73,15 @@ jobs:
         export DATABASE_URL=postgresql://${{ matrix.database-user }}:${{ matrix.database-password }}@${{ matrix.database-host }}:${{ matrix.database-port }}/${{ matrix.database-name }}?sslmode=disable
         python manage.py migrate
 
-    - name: Testing
-      env:
-        POSTGRES_DB_NAME: ${{ matrix.database-name }}
-        POSTGRES_USER: ${{ matrix.database-user }}
-        POSTGRES_PASSWORD: ${{ matrix.database-password }}
-        POSTGRES_DB_HOST: ${{ matrix.database-host }}
-        POSTGRES_DB_PORT: ${{ matrix.database-port }}
-        POSTGRES_DB: ${{ matrix.database-name }}
-      run: |
-        export GITHUB_WORKFLOW=True
-        export DATABASE_URL=postgresql://${{ matrix.database-user }}:${{ matrix.database-password }}@${{ matrix.database-host }}:${{ matrix.database-port }}/${{ matrix.database-name }}?sslmode=disable
-        python manage.py test
+#     - name: Testing
+#       env:
+#         POSTGRES_DB_NAME: ${{ matrix.database-name }}
+#         POSTGRES_USER: ${{ matrix.database-user }}
+#         POSTGRES_PASSWORD: ${{ matrix.database-password }}
+#         POSTGRES_DB_HOST: ${{ matrix.database-host }}
+#         POSTGRES_DB_PORT: ${{ matrix.database-port }}
+#         POSTGRES_DB: ${{ matrix.database-name }}
+#       run: |
+#         export GITHUB_WORKFLOW=True
+#         export DATABASE_URL=postgresql://${{ matrix.database-user }}:${{ matrix.database-password }}@${{ matrix.database-host }}:${{ matrix.database-port }}/${{ matrix.database-name }}?sslmode=disable
+#         python manage.py test
